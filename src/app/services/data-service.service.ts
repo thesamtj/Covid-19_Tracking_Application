@@ -22,10 +22,10 @@ export class DataServiceService {
           let cols = row.split(/,(?=\S)/);
           data.push({
             country: cols[3],
-            confirmed: cols[7],
-            deaths: cols[8],
-            recovered: cols[9],
-            active: cols[10]
+            confirmed: +cols[7],
+            deaths: +cols[8],
+            recovered: +cols[9],
+            active: +cols[10]
           })
         });
         
