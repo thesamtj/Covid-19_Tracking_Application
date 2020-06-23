@@ -17,8 +17,11 @@ export class DataServiceService {
       .pipe(map((result) => {
 
         let rows = result.split('\n');
-        console.log(rows);
-
+        rows.forEach((row)=> {
+          let cols = row.split(',');
+          console.log(cols);
+        });
+        
         return [];
       }));
   }
