@@ -13,23 +13,25 @@ export class DataServiceService {
   constructor(private http: HttpClient) {}
 
   getGlobalData() {
-    return this.http
-      .get(this.globalDataUrl, { responseType : 'text' })
-      .pipe(map((result) => {
+    return this.http.get(this.globalDataUrl, { responseType: 'text' }).pipe(
+      map((result) => {
         let data: GlobalDataSummary[] = [];
         let rows = result.split('\n');
-        rows.forEach((row)=> {
+        rows.splice(0, 1);
+        rows.forEach((row) => {
           let cols = row.split(/,(?=\S)/);
           data.push({
             country: cols[3],
             confirmed: +cols[7],
             deaths: +cols[8],
             recovered: +cols[9],
-            active: +cols[10]
-          })
+            active: +cols[10],
+          });
         });
-        
+
+        console.log(data);
         return [];
-      }));
+      })
+    );
   }
 }
