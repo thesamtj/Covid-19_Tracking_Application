@@ -18,7 +18,7 @@ export class DataServiceService {
 
         let rows = result.split('\n');
         rows.forEach((row)=> {
-          let cols = row.split(',');
+          let cols = row.split(/,(?=\S)/);
           console.log(cols);
         });
         
