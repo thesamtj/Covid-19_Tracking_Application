@@ -90,7 +90,7 @@ export class HomeComponent implements OnInit {
             this.totalRecovered += cs.recovered;
           }
         });
-        this.initChart('c');
+        this.initChart('d');
       },
     });
   }

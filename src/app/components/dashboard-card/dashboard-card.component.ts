@@ -8,12 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
 export class DashboardCardComponent implements OnInit {
   @Input('totalConfirmed')
   totalConfirmed;
-  @Input('totalActive')
-  totalActive;
-  @Input('totalDeaths')
-  totalDeaths;
   @Input('totalRecovered')
   totalRecovered;
+  @Input('totalDeaths')
+  totalDeaths;
+  @Input('totalActive')
+  totalActive;
 
   constructor() { }
 
