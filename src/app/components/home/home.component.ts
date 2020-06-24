@@ -17,6 +17,9 @@ export class HomeComponent implements OnInit {
   pieChart: GoogleChartInterface = {
     chartType: 'PieChart',
   };
+  columnChart: GoogleChartInterface = {
+    chartType: 'ColumnChart',
+  };
 
   constructor(private dataService: DataServiceService) {}
 
@@ -32,6 +35,16 @@ export class HomeComponent implements OnInit {
 
     this.pieChart = {
       chartType: 'PieChart',
+      dataTable: dataTable,
+      //firstRowIsData: true,
+      options: { 
+        title: 'Country: Cases',
+        height: 500
+     },
+    };
+
+    this.columnChart = {
+      chartType: 'ColumnChart',
       dataTable: dataTable,
       //firstRowIsData: true,
       options: { 
