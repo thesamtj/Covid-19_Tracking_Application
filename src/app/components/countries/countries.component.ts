@@ -21,4 +21,8 @@ export class CountriesComponent implements OnInit {
       });
     });
   }
+
+  updateValues(country: string) {
+    console.log(country);
+  }
 }
