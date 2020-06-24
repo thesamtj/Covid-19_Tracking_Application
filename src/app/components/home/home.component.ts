@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataServiceService } from 'src/app/services/data-service.service';
+import { GlobalDataSummary } from 'src/app/models/global-data';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,7 @@ export class HomeComponent implements OnInit {
   totalActive = 0;
   totalDeaths = 0;
   totalRecovered = 0;
+  globalData: GlobalDataSummary[];
 
   constructor(private dataService: DataServiceService) {}
 
@@ -18,7 +20,7 @@ export class HomeComponent implements OnInit {
     this.dataService.getGlobalData().subscribe({
       next: (result) => {
         console.log(result);
-
+        this.globalData = result;
         result.forEach((cs) => {
           if (!Number.isNaN(cs.confirmed)) {
             this.totalConfirmed += cs.active;
