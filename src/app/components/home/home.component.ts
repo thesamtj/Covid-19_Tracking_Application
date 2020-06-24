@@ -84,8 +84,8 @@ export class HomeComponent implements OnInit {
         this.globalData = result;
         result.forEach((cs) => {
           if (!Number.isNaN(cs.confirmed)) {
-            this.totalConfirmed += cs.active;
             this.totalConfirmed += cs.confirmed;
+            this.totalActive += cs.active;
             this.totalDeaths += cs.deaths;
             this.totalRecovered += cs.recovered;
           }
