@@ -90,13 +90,13 @@ export class HomeComponent implements OnInit {
             this.totalRecovered += cs.recovered;
           }
         });
-        this.initChart('d');
+        this.initChart('c');
       },
     });
   }
 
   updateChart(input: HTMLInputElement) {
-    console.log(input.value);
+    console.log(`Update chart: ${input.value}`);
     this.initChart(input.value);
   }
 }
