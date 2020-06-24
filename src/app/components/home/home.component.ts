@@ -24,33 +24,32 @@ export class HomeComponent implements OnInit {
   constructor(private dataService: DataServiceService) {}
 
   initChart() {
-
     let dataTable = [];
-    dataTable.push(["Country", "Cases"])
-    this.globalData.forEach(cs=>{
-      dataTable.push([
-        cs.country, cs.confirmed
-      ])
-    })
+    dataTable.push(['Country', 'Cases']);
+    this.globalData.forEach((cs) => {
+      if (cs.confirmed > 10000) {
+        dataTable.push([cs.country, cs.confirmed]);
+      }
+    });
 
     this.pieChart = {
       chartType: 'PieChart',
       dataTable: dataTable,
       //firstRowIsData: true,
-      options: { 
+      options: {
         title: 'Country: Cases',
-        height: 500
-     },
+        height: 500,
+      },
     };
 
     this.columnChart = {
       chartType: 'ColumnChart',
       dataTable: dataTable,
       //firstRowIsData: true,
-      options: { 
+      options: {
         title: 'Country: Cases',
-        height: 500
-     },
+        height: 500,
+      },
     };
   }
 
