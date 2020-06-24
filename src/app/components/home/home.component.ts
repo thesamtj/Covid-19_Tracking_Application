@@ -15,11 +15,29 @@ export class HomeComponent implements OnInit {
   totalRecovered = 0;
   globalData: GlobalDataSummary[];
   pieChart: GoogleChartInterface = {
-    chartType: 'PieChart'
+    chartType: 'PieChart',
   };
 
   constructor(private dataService: DataServiceService) {}
-  
+
+  initChart() {
+
+    let dataTable = [];
+    dataTable.push(["Country", "Cases"])
+    this.globalData.forEach(cs=>{
+      dataTable.push([
+        cs.country, cs.confirmed
+      ])
+    })
+
+    this.pieChart = {
+      chartType: 'PieChart',
+      dataTable: dataTable,
+      //firstRowIsData: true,
+      options: { Country: 'Cases' },
+    };
+  }
+
   ngOnInit(): void {
     this.dataService.getGlobalData().subscribe({
       next: (result) => {
@@ -33,6 +51,7 @@ export class HomeComponent implements OnInit {
             this.totalRecovered += cs.recovered;
           }
         });
+        this.initChart();
       },
     });
   }
