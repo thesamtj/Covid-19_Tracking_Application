@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataServiceService } from 'src/app/services/data-service.service';
 import { GlobalDataSummary } from 'src/app/models/global-data';
+import { GoogleChartInterface } from 'ng2-google-charts';
 
 @Component({
   selector: 'app-home',
@@ -13,9 +14,12 @@ export class HomeComponent implements OnInit {
   totalDeaths = 0;
   totalRecovered = 0;
   globalData: GlobalDataSummary[];
+  pieChart: GoogleChartInterface = {
+    chartType: 'PieChart'
+  };
 
   constructor(private dataService: DataServiceService) {}
-
+  
   ngOnInit(): void {
     this.dataService.getGlobalData().subscribe({
       next: (result) => {
