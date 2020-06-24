@@ -33,9 +33,9 @@ export class HomeComponent implements OnInit {
 
       if (caseType == 'r') if (cs.recovered > 5000) value = cs.recovered;
 
-      if (caseType == 'd') if (cs.deaths > 10000) value = cs.confirmed;
+      if (caseType == 'd') if (cs.deaths > 1000) value = cs.deaths;
 
-      if (caseType == '') if (cs.active > 10000) value = cs.active;
+      if (caseType == 'a') if (cs.active > 2000) value = cs.active;
 
       dataTable.push([cs.country, value]);
     });
