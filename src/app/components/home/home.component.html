@@ -9,6 +9,73 @@
   ></app-dashboard-card>
 </div>
 <hr />
+<div class="ui form">
+  <div class="inline fields">
+    <label for="fruit">Select Case Type:</label>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input
+          id="c"
+          #c
+          (click)="updateChart(c)"
+          type="radio"
+          name="caseTypes"
+          values="c"
+          checked=""
+          tabindex="0"
+          class="hidden"
+        />
+        <label for="c">Confirmed</label>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input
+          id="r"
+          #r
+          (click)="updateChart(r)"
+          type="radio"
+          name="caseTypes"
+          values="r"
+          tabindex="0"
+          class="hidden"
+        />
+        <label for="r">Recovered</label>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input
+          id="d"
+          #d
+          (click)="updateChart(d)"
+          type="radio"
+          name="caseTypes"
+          values="d"
+          tabindex="0"
+          class="hidden"
+        />
+        <label for="d">Deaths</label>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input
+          id="a"
+          #a
+          (click)="updateChart(a)"
+          type="radio"
+          name="caseTypes"
+          values="a"
+          tabindex="0"
+          class="hidden"
+        />
+        <label for="a">Active</label>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="row">
   <div class="col">
     <google-chart [data]="columnChart"></google-chart>
