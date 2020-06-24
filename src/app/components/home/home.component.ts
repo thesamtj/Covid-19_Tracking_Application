@@ -34,7 +34,10 @@ export class HomeComponent implements OnInit {
       chartType: 'PieChart',
       dataTable: dataTable,
       //firstRowIsData: true,
-      options: { Country: 'Cases' },
+      options: { 
+        title: 'Country: Cases',
+        height: 500
+     },
     };
   }
 
