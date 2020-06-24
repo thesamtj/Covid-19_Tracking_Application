@@ -44,8 +44,8 @@ export class DataServiceService {
          
         });
 
-        console.log(raw);
-        return [];
+        
+        return Object.values(raw);
       })
     );
   }
