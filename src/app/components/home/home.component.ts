@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
 
   initChart(caseType: string) {
     let dataTable = [];
+    
     dataTable.push(['Country', 'Cases']);
     this.globalData.forEach((cs) => {
       let value: number;
