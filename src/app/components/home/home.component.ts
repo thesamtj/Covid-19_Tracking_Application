@@ -7,6 +7,10 @@ import { DataServiceService } from 'src/app/services/data-service.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  totalConfirmed = 0;
+  totalActive = 0;
+  totalDeaths = 0;
+  totalRecovered= 0;
 
   constructor(private dataService: DataServiceService) { }
 
@@ -15,6 +19,13 @@ export class HomeComponent implements OnInit {
       {
         next: (result) => {
           console.log(result);
+
+          result.forEach((cs) =>{
+            this.totalConfirmed += cs.active;
+            this.totalConfirmed += cs.confirmed;
+            this.totalDeaths += cs.deaths;
+            this.totalRecovered += cs.recovered;
+          })
         }
       }
     )
