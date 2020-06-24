@@ -29,17 +29,32 @@ export class HomeComponent implements OnInit {
     dataTable.push(['Country', 'Cases']);
     this.globalData.forEach((cs) => {
       let value: number;
-
-      if (caseType == 'c') if (cs.confirmed > 10000) value = cs.confirmed;
-
-      if (caseType == 'r') if (cs.recovered > 5000) value = cs.recovered;
-
-      if (caseType == 'd') if (cs.deaths > 1000) value = cs.deaths;
-
-      if (caseType == 'a') if (cs.active > 2000) value = cs.active;
-
+      
+      if (caseType == 'c') {
+        if (cs.confirmed > 10000) {
+          value = cs.confirmed;
+        }
+      }
+      if (caseType == 'r') {
+        if (cs.recovered > 5000) {
+          value = cs.recovered;
+        }
+      }
+      if (caseType == 'd') {
+        if (cs.deaths > 1000) {
+          value = cs.deaths;
+        }
+      }
+      if (caseType == 'a') {
+        if (cs.active > 2000) {
+          value = cs.active;
+        }
+      }
+      
       dataTable.push([cs.country, value]);
     });
+
+    console.log(`Data table: ${dataTable}`);
 
     this.pieChart = {
       chartType: 'PieChart',
