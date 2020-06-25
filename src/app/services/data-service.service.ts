@@ -19,8 +19,10 @@ export class DataServiceService {
       map((result) => {
         let rows = result.split('\n');
         let header = rows[0];
-        let headerValues = header.split(/,(?=\S)/);
-        return result;
+        let dates = header.split(/,(?=\S)/);
+        dates.splice(0, 4);
+
+        return result;  
       })
     );
   }
