@@ -19,7 +19,7 @@ export class DataServiceService {
       map((result) => {
         let rows = result.split('\n');
         let header = rows[0];
-
+        let headerValues = header.split(/,(?=\S)/);
         return result;
       })
     );
