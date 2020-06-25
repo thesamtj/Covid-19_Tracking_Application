@@ -14,12 +14,14 @@ export class CountriesComponent implements OnInit {
   totalActive = 0;
   totalDeaths = 0;
   totalRecovered = 0;
+  dateWiseData;
 
   constructor(private dataService: DataServiceService) {}
 
   ngOnInit(): void {
     this.dataService.getDateWiseData().subscribe((result) => {
-      console.log(result);
+      this.dateWiseData = result;
+      // console.log(result);
     });
 
     this.dataService.getGlobalData().subscribe((result) => {
