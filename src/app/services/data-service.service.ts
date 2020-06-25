@@ -23,6 +23,12 @@ export class DataServiceService {
         dates.splice(0, 4);
         rows.splice(0, 1);
 
+        rows.forEach(row => {
+          let cols = row.split(/,(?=\S)/);
+          let con = cols[1];
+          cols.splice(0, 4);
+        });
+
         return result;  
       })
     );
