@@ -30,10 +30,10 @@ export class CountriesComponent implements OnInit {
     console.log(country);
     this.data.forEach((cs) => {
       if (country == cs.country) {
-        this.totalConfirmed = cs.active;
-        this.totalConfirmed = cs.confirmed;
-        this.totalDeaths = cs.deaths;
-        this.totalRecovered = cs.recovered;
+        this.totalConfirmed += cs.confirmed;
+        this.totalActive += cs.active;
+        this.totalDeaths += cs.deaths;
+        this.totalRecovered += cs.recovered;
       }
     });
   }

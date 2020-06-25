@@ -24,12 +24,13 @@ export class HomeComponent implements OnInit {
   constructor(private dataService: DataServiceService) {}
 
   initChart(caseType: string) {
+
     let dataTable = [];
-    
     dataTable.push(['Country', 'Cases']);
+    
     this.globalData.forEach((cs) => {
       let value: number;
-      
+
       if (caseType == 'c') {
         if (cs.confirmed > 10000) {
           value = cs.confirmed;
@@ -50,7 +51,7 @@ export class HomeComponent implements OnInit {
           value = cs.active;
         }
       }
-      
+
       dataTable.push([cs.country, value]);
     });
 
