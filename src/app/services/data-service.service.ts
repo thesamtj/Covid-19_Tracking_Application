@@ -21,6 +21,7 @@ export class DataServiceService {
         let header = rows[0];
         let dates = header.split(/,(?=\S)/);
         dates.splice(0, 4);
+        rows.splice(0, 1);
 
         return result;  
       })
