@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataServiceService } from 'src/app/services/data-service.service';
 import { GlobalDataSummary } from 'src/app/models/global-data';
+import { DateWiseData } from 'src/app/models/date-wise-data';
 
 @Component({
   selector: 'app-countries',
@@ -14,6 +15,7 @@ export class CountriesComponent implements OnInit {
   totalActive = 0;
   totalDeaths = 0;
   totalRecovered = 0;
+  selectedCountryData: DateWiseData[];
   dateWiseData;
 
   constructor(private dataService: DataServiceService) {}
@@ -42,5 +44,7 @@ export class CountriesComponent implements OnInit {
         this.totalRecovered += cs.recovered;
       }
     });
+
+    this.selectedCountryData = this.dateWiseData[country];
   }
 }
