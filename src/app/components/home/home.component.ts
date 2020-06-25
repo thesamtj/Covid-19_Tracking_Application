@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
 
     let dataTable = [];
     dataTable.push(['Country', 'Cases']);
-    
+
     this.globalData.forEach((cs) => {
       let value: number;
 
@@ -81,7 +81,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.getGlobalData().subscribe({
       next: (result) => {
-        console.log(result);
+        // console.log(result);
         this.globalData = result;
         result.forEach((cs) => {
           if (!Number.isNaN(cs.confirmed)) {
