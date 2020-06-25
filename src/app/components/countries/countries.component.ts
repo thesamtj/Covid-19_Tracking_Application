@@ -18,6 +18,10 @@ export class CountriesComponent implements OnInit {
   constructor(private dataService: DataServiceService) {}
 
   ngOnInit(): void {
+    this.dataService.getDateWiseData().subscribe((result) => {
+      console.log(result);
+    });
+
     this.dataService.getGlobalData().subscribe((result) => {
       this.data = result;
       this.data.forEach((cs) => {

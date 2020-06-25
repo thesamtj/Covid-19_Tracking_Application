@@ -14,6 +14,14 @@ export class DataServiceService {
 
   constructor(private http: HttpClient) {}
 
+  getDateWiseData() {
+    return this.http.get(this.dateWiseDataUrl, { responseType: 'text' }).pipe(
+      map((result) => {
+        return result
+      })
+    );
+  }
+
   getGlobalData() {
     return this.http.get(this.globalDataUrl, { responseType: 'text' }).pipe(
       map((result) => {
