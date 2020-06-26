@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { DataServiceService } from 'src/app/services/data-service.service';
 import { GlobalDataSummary } from 'src/app/models/global-data';
 import { DateWiseData } from 'src/app/models/date-wise-data';
-import { GoogleChartInterface } from 'ng2-google-charts';
 import { merge } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -21,8 +20,17 @@ export class CountriesComponent implements OnInit {
   selectedCountryData: DateWiseData[];
   dateWiseData;
   loading = true;
-  lineChart: GoogleChartInterface = {
-    chartType: 'LineChart',
+  dataTable = [];
+  chart = {
+    LineChart: 'LineChart',
+    height: 500,
+    options: {
+      animation: {
+        duration: 1000,
+        easing: 'out',
+      },
+      is3D: true,
+    },
   };
 
   constructor(private dataService: DataServiceService) {}
@@ -51,24 +59,14 @@ export class CountriesComponent implements OnInit {
   }
 
   updateChart() {
-    let dataTable = [];
-    dataTable.push(['Date', 'Cases']);
+    this.dataTable = [];
+    // dataTable.push(['Date', 'Cases']);
 
     this.selectedCountryData.forEach((cs) => {
-      dataTable.push([cs.date, cs.cases]);
+      this.dataTable.push([cs.date, cs.cases]);
     });
 
     // console.log(dataTable)
-
-    this.lineChart = {
-      chartType: 'LineChart',
-      dataTable: dataTable,
-      //firstRowIsData: true,
-      options: {
-        title: 'Date:Cases ',
-        height: 500,
-      },
-    };
   }
 
   updateValues(country: string) {

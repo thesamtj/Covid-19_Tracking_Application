@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataServiceService } from 'src/app/services/data-service.service';
 import { GlobalDataSummary } from 'src/app/models/global-data';
-import { GoogleChartInterface } from 'ng2-google-charts';
 
 @Component({
   selector: 'app-home',
@@ -15,19 +14,26 @@ export class HomeComponent implements OnInit {
   totalRecovered = 0;
   globalData: GlobalDataSummary[];
   loading = true;
-  pieChart: GoogleChartInterface = {
-    chartType: 'PieChart',
-  };
-  columnChart: GoogleChartInterface = {
-    chartType: 'ColumnChart',
-  };
+  dataTable = [];
+  chart = {
+    PieChart : "PieChart" ,
+    ColumnChart : 'ColumnChart',
+    height: 500, 
+    options: {
+      animation:{
+        duration: 1000,
+        easing: 'out',
+      },
+      is3D: true
+    }  
+  }
 
   constructor(private dataService: DataServiceService) {}
 
   initChart(caseType: string) {
 
-    let dataTable = [];
-    dataTable.push(['Country', 'Cases']);
+    this.dataTable = [];
+    // this.datatable.push(["Country", "Cases"])
 
     this.globalData.forEach((cs) => {
       let value: number;
@@ -53,30 +59,11 @@ export class HomeComponent implements OnInit {
         }
       }
 
-      dataTable.push([cs.country, value]);
+      this.dataTable.push([cs.country, value]);
     });
 
     // console.log(`Data table: ${dataTable}`);
 
-    this.pieChart = {
-      chartType: 'PieChart',
-      dataTable: dataTable,
-      //firstRowIsData: true,
-      options: {
-        title: 'Country: Cases',
-        height: 500,
-      },
-    };
-
-    this.columnChart = {
-      chartType: 'ColumnChart',
-      dataTable: dataTable,
-      //firstRowIsData: true,
-      options: {
-        title: 'Country: Cases',
-        height: 500,
-      },
-    };
   }
 
   ngOnInit(): void {
