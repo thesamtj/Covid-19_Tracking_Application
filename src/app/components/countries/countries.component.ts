@@ -56,7 +56,7 @@ export class CountriesComponent implements OnInit {
       dataTable: dataTable,
       //firstRowIsData: true,
       options: {
-        title: 'Cases: Date',
+        title: 'Date:Cases ',
         height: 500,
       },
     };
