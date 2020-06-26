@@ -27,6 +27,7 @@ export class CountriesComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.getDateWiseData().subscribe((result) => {
       this.dateWiseData = result;
+      this.updateChart();
       // console.log(result);
     });
 
@@ -71,5 +72,6 @@ export class CountriesComponent implements OnInit {
     });
 
     this.selectedCountryData = this.dateWiseData[country];
+    this.updateChart();
   }
 }
