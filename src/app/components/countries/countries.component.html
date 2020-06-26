@@ -25,8 +25,11 @@
     [totalRecovered]="totalRecovered"
   ></app-dashboard-card>
 
-  <div class="card">
-    <table class="table">
+  <div class="card row">
+    <div class="col">
+      <google-chart [data]="lineChart"></google-chart>
+    </div>
+    <table class="table col">
       <thead>
         <tr>
           <th>S/No</th>
