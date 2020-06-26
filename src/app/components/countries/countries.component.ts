@@ -43,8 +43,7 @@ export class CountriesComponent implements OnInit {
       )
     ).subscribe({
       complete: () => {
-        this.selectedCountryData = this.dateWiseData['Nigeria'];
-        this.updateChart();
+        this.updateValues('Nigeria');
       },
     });
   }
