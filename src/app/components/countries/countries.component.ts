@@ -41,7 +41,12 @@ export class CountriesComponent implements OnInit {
           });
         })
       )
-    );
+    ).subscribe({
+      complete: () => {
+        this.selectedCountryData = this.dateWiseData['India'];
+        this.updateChart();
+      },
+    });
   }
 
   updateChart() {
