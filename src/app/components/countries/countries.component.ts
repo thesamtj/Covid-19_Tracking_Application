@@ -42,12 +42,15 @@ export class CountriesComponent implements OnInit {
   updateChart() {
 
     let dataTable = [];
-    dataTable.push(['Cases', 'Date']);
+    dataTable.push(['Date', 'Cases']);
 
     this.selectedCountryData.forEach((cs) => {
-      dataTable.push([cs.cases, cs.date])
+      dataTable.push([cs.date, cs.cases])
+      
     });
 
+    // console.log(dataTable)
+    
     this.lineChart = {
       chartType: 'LineChart',
       dataTable: dataTable,
@@ -72,6 +75,7 @@ export class CountriesComponent implements OnInit {
     });
 
     this.selectedCountryData = this.dateWiseData[country];
+    // console.log(this.selectedCountryData)
     this.updateChart();
   }
 }

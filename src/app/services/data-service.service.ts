@@ -41,7 +41,7 @@ export class DataServiceService {
           });
         });
 
-        // console.log(mainData);
+        console.log(`mainData's result: ${mainData}`);
         return mainData;
       })
     );
