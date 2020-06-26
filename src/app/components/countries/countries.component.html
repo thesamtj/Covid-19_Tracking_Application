@@ -5,8 +5,16 @@
   <div class="mx-auto">
     <div class="form-group col-lg-5 mx-auto">
       <label for="c">Select Country</label>
-      <select name="" class="form-control" id="c" #input (change)="updateValues(input.value)">
-        <option value="{{con}}" *ngFor="let con of countries">{{ con }}</option>
+      <select
+        name=""
+        class="form-control"
+        id="c"
+        #input
+        (change)="updateValues(input.value)"
+      >
+        <option value="{{ con }}" *ngFor="let con of countries">{{
+          con
+        }}</option>
       </select>
     </div>
   </div>
@@ -16,4 +24,23 @@
     [totalDeaths]="totalDeaths"
     [totalRecovered]="totalRecovered"
   ></app-dashboard-card>
+
+  <div class="card">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>s/no</th>
+          <th>Date</th>
+          <th>Cases</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cs of selectedCountryData; index as i">
+          <td>{{ i + 1 }}</td>
+          <td>{{ cs.date | date }}</td>
+          <td>{{ cs.cases }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
