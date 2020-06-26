@@ -3,6 +3,8 @@ import { DataServiceService } from 'src/app/services/data-service.service';
 import { GlobalDataSummary } from 'src/app/models/global-data';
 import { DateWiseData } from 'src/app/models/date-wise-data';
 import { GoogleChartInterface } from 'ng2-google-charts';
+import { merge } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-countries',
@@ -25,32 +27,33 @@ export class CountriesComponent implements OnInit {
   constructor(private dataService: DataServiceService) {}
 
   ngOnInit(): void {
-    this.dataService.getDateWiseData().subscribe((result) => {
-      this.dateWiseData = result;
-      this.updateChart();
-      // console.log(result);
-    });
-
-    this.dataService.getGlobalData().subscribe((result) => {
-      this.data = result;
-      this.data.forEach((cs) => {
-        this.countries.push(cs.country);
-      });
-    });
+    merge(
+      this.dataService.getDateWiseData().pipe(
+        map((result) => {
+          this.dateWiseData = result;
+        })
+      ),
+      this.dataService.getGlobalData().pipe(
+        map((result) => {
+          this.data = result;
+          this.data.forEach((cs) => {
+            this.countries.push(cs.country);
+          });
+        })
+      )
+    );
   }
 
   updateChart() {
-
     let dataTable = [];
     dataTable.push(['Date', 'Cases']);
 
     this.selectedCountryData.forEach((cs) => {
-      dataTable.push([cs.date, cs.cases])
-      
+      dataTable.push([cs.date, cs.cases]);
     });
 
     // console.log(dataTable)
-    
+
     this.lineChart = {
       chartType: 'LineChart',
       dataTable: dataTable,
@@ -60,8 +63,7 @@ export class CountriesComponent implements OnInit {
         height: 500,
       },
     };
-
-   }
+  }
 
   updateValues(country: string) {
     // console.log(country);
