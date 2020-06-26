@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
       dataTable.push([cs.country, value]);
     });
 
-    console.log(`Data table: ${dataTable}`);
+    // console.log(`Data table: ${dataTable}`);
 
     this.pieChart = {
       chartType: 'PieChart',
