@@ -23,6 +23,7 @@ export class CountriesComponent implements OnInit {
   dataTable = [];
   chart = {
     LineChart: 'LineChart',
+    title: 'Date:Cases',
     height: 500,
     options: {
       animation: {

@@ -16,22 +16,22 @@ export class HomeComponent implements OnInit {
   loading = false;
   dataTable = [];
   chart = {
-    PieChart : "PieChart" ,
-    ColumnChart : 'ColumnChart',
-    height: 500, 
+    title: 'Country:Cases',
+    PieChart: 'PieChart',
+    ColumnChart: 'ColumnChart',
+    height: 500,
     options: {
-      animation:{
+      animation: {
         duration: 1000,
         easing: 'out',
       },
-      is3D: true
-    }  
-  }
+      is3D: true,
+    },
+  };
 
   constructor(private dataService: DataServiceService) {}
 
   initChart(caseType: string) {
-
     this.dataTable = [];
     // this.datatable.push(["Country", "Cases"])
 
@@ -63,7 +63,6 @@ export class HomeComponent implements OnInit {
     });
 
     // console.log(`Data table: ${dataTable}`);
-
   }
 
   ngOnInit(): void {
@@ -81,9 +80,9 @@ export class HomeComponent implements OnInit {
         });
         this.initChart('c');
       },
-      complete: ()=> {
+      complete: () => {
         this.loading = false;
-      }
+      },
     });
   }
 
