@@ -16,9 +16,9 @@
         #input
         (change)="updateValues(input.value)"
       >
-        <option value="{{ con }}" *ngFor="let con of countries">{{
-          con
-        }}</option>
+        <option value="{{ con }}" *ngFor="let con of countries" [selected]="con == 'Nigeria'" >
+          {{ con }}
+        </option>
       </select>
     </div>
   </div>

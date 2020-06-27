@@ -1,102 +1,105 @@
-<div class="ui inverted dimmer" [class.active]="loading">
-  <div class="ui text loader">Loading</div>
-</div>
+<ng-container>
+  <div class="ui inverted dimmer" [class.active]="loading">
+    <div class="ui text loader">Loading</div>
+  </div>
 
-<div class="jumbotron bg-white text-center">
-  <h1 class="display-4">Corona Covid-19 Tracker</h1>
+  <div class="jumbotron bg-white text-center">
+    <h1 class="display-4">Corona Covid-19 Tracker</h1>
+    <hr />
+    <app-dashboard-card
+      [totalConfirmed]="totalConfirmed"
+      [totalRecovered]="totalRecovered"
+      [totalDeaths]="totalDeaths"
+      [totalActive]="totalActive"
+    ></app-dashboard-card>
+  </div>
   <hr />
-  <app-dashboard-card
-    [totalConfirmed]="totalConfirmed"
-    [totalRecovered]="totalRecovered"
-    [totalDeaths]="totalDeaths"
-    [totalActive]="totalActive"
-  ></app-dashboard-card>
-</div>
-<hr />
-<div class="ui form">
-  <div class="inline fields">
-    <label for="caseTypes">Select Case Type:</label>
-    <div class="field">
-      <div class="ui radio checkbox">
-        <input
-          id="c"
-          #c
-          (click)="updateChart(c)"
-          type="radio"
-          name="caseTypes"
-          value="c"
-          checked=""
-          tabindex="0"
-          class="hidden"
-        />
-        <label for="c">Confirmed</label>
-      </div>
-    </div>
-    <div class="field">
-      <div class="ui radio checkbox">
-        <input
-          id="r"
-          #r
-          (click)="updateChart(r)"
-          type="radio"
-          name="caseTypes"
-          value="r"
-          tabindex="0"
-          class="hidden"
-        />
-        <label for="r">Recovered</label>
-      </div>
-    </div>
-    <div class="field">
-      <div class="ui radio checkbox">
-        <input
-          id="d"
-          #d
-          (click)="updateChart(d)"
-          type="radio"
-          name="caseTypes"
-          value="d"
-          tabindex="0"
-          class="hidden"
-        />
-        <label for="d">Deaths</label>
-      </div>
-    </div>
-    <div class="field">
-      <div class="ui radio checkbox">
-        <input
-          id="a"
-          #a
-          (click)="updateChart(a)"
-          type="radio"
-          name="caseTypes"
-          value="a"
-          tabindex="0"
-          class="hidden"
-        />
-        <label for="a">Active</label>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="row">
-  <div class="col">
-    <google-chart
-      [type]="chart.PieChart"
-      [options]="chart.options"
-      style="width: 100%;"
-      [height]="chart.height"
-      [data]="dataTable"
-    ></google-chart>
+  <div class="ui form center">
+    <div class="inline fields">
+      <label for="caseTypes">Select Case Type:</label>
+      <div class="field">
+        <div class="ui radio checkbox">
+          <input
+            id="c"
+            #c
+            (click)="updateChart(c)"
+            type="radio"
+            name="caseTypes"
+            value="c"
+            checked=""
+            tabindex="0"
+            class="hidden"
+          />
+          <label for="c">Confirmed</label>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui radio checkbox">
+          <input
+            id="r"
+            #r
+            (click)="updateChart(r)"
+            type="radio"
+            name="caseTypes"
+            value="r"
+            tabindex="0"
+            class="hidden"
+          />
+          <label for="r">Recovered</label>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui radio checkbox">
+          <input
+            id="d"
+            #d
+            (click)="updateChart(d)"
+            type="radio"
+            name="caseTypes"
+            value="d"
+            tabindex="0"
+            class="hidden"
+          />
+          <label for="d">Deaths</label>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui radio checkbox">
+          <input
+            id="a"
+            #a
+            (click)="updateChart(a)"
+            type="radio"
+            name="caseTypes"
+            value="a"
+            tabindex="0"
+            class="hidden"
+          />
+          <label for="a">Active</label>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="col">
-    <google-chart
-      [type]="chart.ColumnChart"
-      style="width: 100%;"
-      [options]="chart.options"
-      [height]="chart.height"
-      [data]="dataTable"
-    ></google-chart>
+
+  <div class="row">
+    <div class="col">
+      <google-chart
+        [type]="chart.PieChart"
+        [options]="chart.options"
+        style="width: 100%;"
+        [height]="chart.height"
+        [data]="dataTable"
+      ></google-chart>
+    </div>
+    <div class="col">
+      <google-chart
+        [type]="chart.ColumnChart"
+        style="width: 100%;"
+        [options]="chart.options"
+        [height]="chart.height"
+        [data]="dataTable"
+      ></google-chart>
+    </div>
   </div>
-</div>
+</ng-container>
