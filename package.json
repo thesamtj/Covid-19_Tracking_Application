@@ -7,8 +7,12 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "npm run build -- --prod --aot"
   },
+  "keywords": [],
+  "author": "Samuel Tijani",
+  "license": "",
   "private": true,
   "dependencies": {
     "@angular/animations": "~9.1.7",
@@ -24,7 +28,8 @@
     "jquery": "^3.5.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "typescript": "~3.8.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.6",
@@ -43,7 +48,6 @@
     "karma-jasmine-html-reporter": "^1.4.2",
     "protractor": "~5.4.3",
     "ts-node": "~8.3.0",
-    "tslint": "~6.1.0",
-    "typescript": "~3.8.3"
+    "tslint": "~6.1.0"
   }
 }
