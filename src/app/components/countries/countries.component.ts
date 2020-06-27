@@ -19,7 +19,7 @@ export class CountriesComponent implements OnInit {
   totalRecovered = 0;
   selectedCountryData: DateWiseData[];
   dateWiseData;
-  loading = false;
+  loading = true;
   dataTable = [];
   chart = {
     LineChart: 'LineChart',
