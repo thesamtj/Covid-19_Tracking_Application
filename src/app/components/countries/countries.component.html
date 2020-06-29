@@ -16,7 +16,11 @@
         #input
         (change)="updateValues(input.value)"
       >
-        <option value="{{ con }}" *ngFor="let con of countries" [selected]="con == 'Nigeria'" >
+        <option
+          value="{{ con }}"
+          *ngFor="let con of countries"
+          [selected]="con == 'Nigeria'"
+        >
           {{ con }}
         </option>
       </select>
@@ -30,7 +34,17 @@
   ></app-dashboard-card>
 
   <div class="row">
-    <div class="col">
+    <div class="col-sm">
+      <google-chart
+        [type]="chart.LineChart"
+        [title]="chart.title"
+        style="width: 100%;"
+        [options]="chart.options"
+        [height]="chart.height"
+        [data]="dataTable"
+      ></google-chart>
+    </div>
+    <div class="col-sm">
       <table class="table">
         <thead>
           <tr>
@@ -47,16 +61,6 @@
           </tr>
         </tbody>
       </table>
-    </div>
-    <div class="col">
-      <google-chart
-        [type]="chart.LineChart"
-        [title]="chart.title"
-        style="width: 100%;"
-        [options]="chart.options"
-        [height]="chart.height"
-        [data]="dataTable"
-      ></google-chart>
     </div>
   </div>
 </div>

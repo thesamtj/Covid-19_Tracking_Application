@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   totalDeaths = 0;
   totalRecovered = 0;
   globalData: GlobalDataSummary[];
-  loading = true;
+  loading = false;
   dataTable = [];
   chart = {
     title: 'Country:Cases',
