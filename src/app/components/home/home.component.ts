@@ -21,11 +21,46 @@ export class HomeComponent implements OnInit {
     ColumnChart: 'ColumnChart',
     height: 500,
     options: {
+      hAxis: {
+        title: 'Countries',
+        titleTextStyle: {
+          color: '#007Bff',
+          fontName: 'Arial',
+          fontSize: 12,
+          bold: true,
+          italic: false,
+        },
+        textStyle: {
+          color: '#fff',
+          fontSize: 16,
+          fontName: 'Arial',
+          bold: false,
+          italic: true,
+        },
+      },
+      vAxis: {
+        title: 'Cases',
+        titleTextStyle: {
+          color: '#007Bff',
+          fontName: 'Arial',
+          fontSize: 12,
+          bold: true,
+          italic: false,
+        },
+        textStyle: {
+          color: '#fff',
+          fontSize: 16,
+          fontName: 'Arial',
+          bold: false,
+          italic: true,
+        },
+      },
       animation: {
         duration: 1000,
         easing: 'out',
       },
       is3D: true,
+      backgroundColor: '#343a40',
     },
   };
 

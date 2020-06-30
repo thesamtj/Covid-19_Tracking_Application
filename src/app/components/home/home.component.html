@@ -1,10 +1,10 @@
-<ng-container class="home">
+<ng-container>
   <div class="ui inverted dimmer" [class.active]="loading">
     <div class="ui text loader">Loading</div>
   </div>
 
-  <div class="jumbotron bg-white text-center">
-    <h1 class="display-4">Corona Covid-19 Tracker</h1>
+  <div class="jumbotron bg-dark text-center">
+    <h1 class="display-4 text-white">Corona Covid-19 Tracker</h1>
     <hr />
     <app-dashboard-card
       [totalConfirmed]="totalConfirmed"
@@ -17,7 +17,7 @@
 
   <div class="ui form center">
     <div class="inline fields">
-      <label for="caseTypes">Select Case Type:</label>
+      <label for="caseTypes" class="text-white">Select Case Type:</label>
       <div class="field">
         <div class="ui radio checkbox">
           <input
@@ -31,7 +31,7 @@
             tabindex="0"
             class="hidden"
           />
-          <label for="c">Confirmed</label>
+          <label for="c" class="text-white">Confirmed</label>
         </div>
       </div>
       <div class="field">
@@ -46,7 +46,7 @@
             tabindex="0"
             class="hidden"
           />
-          <label for="r">Recovered</label>
+          <label for="r" class="text-white">Recovered</label>
         </div>
       </div>
       <div class="field">
@@ -61,7 +61,7 @@
             tabindex="0"
             class="hidden"
           />
-          <label for="d">Deaths</label>
+          <label for="d" class="text-white">Deaths</label>
         </div>
       </div>
       <div class="field">
@@ -76,13 +76,13 @@
             tabindex="0"
             class="hidden"
           />
-          <label for="a">Active</label>
+          <label for="a" class="text-white">Active</label>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row gChart">
     <div class="col-sm">
       <google-chart
         [title]="chart.title"
@@ -104,5 +104,5 @@
       ></google-chart>
     </div>
   </div>
-  <app-footer class="footer"></app-footer>
+  <app-footer></app-footer>
 </ng-container>

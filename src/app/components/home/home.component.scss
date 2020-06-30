@@ -1,17 +1,13 @@
-// .home {
-//   position: relative;
-//   min-height: 100%;
-// }
-
-// .footer {
-//   position: absolute;
-//   bottom: 0;
-//   height: 100px;
-//   width: 100%;
-// }
-
 .center {
   display: flex;
   justify-content: center;
   align-content: center;
+}
+
+hr {
+  border-top: 1px solid whitesmoke;
+}
+
+.gChart {
+ padding-bottom: 30px;
 }

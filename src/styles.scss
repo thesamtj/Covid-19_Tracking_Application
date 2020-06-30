@@ -1,7 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import './customize-bootstrap.scss';
+// @import './customize-bootstrap.scss';
 
-// body {
-//    background-color: green; 
-// }
+body {
+   position: relative; 
+   min-height: 100vh;
+   background-color: #343a40 !important; 
+}
+
+
