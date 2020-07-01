@@ -15,3 +15,17 @@ hr {
 .gChart {
   padding-bottom: 30px;
 }
+
+.text-title {
+  color: white;
+}
+
+@media all and (max-width: 699px) {
+  .text-title {
+    font-size: 2rem;
+  }
+
+  .center {
+    margin-left: 25px;
+  }
+}
