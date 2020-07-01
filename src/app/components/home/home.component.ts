@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
         },
         textStyle: {
           color: '#fff',
-          fontSize: 16,
+          fontSize: 8,
           fontName: 'Arial',
           bold: false,
           italic: true,
@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
         },
         textStyle: {
           color: '#fff',
-          fontSize: 16,
+          fontSize: 8,
           fontName: 'Arial',
           bold: false,
           italic: true,
