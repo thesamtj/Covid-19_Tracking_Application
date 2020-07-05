@@ -2,6 +2,11 @@
   background-color: #292f35 !important;
 }
 
+.ui.form {
+  position: static;
+  max-width: 100%;
+}
+
 .center {
   display: flex;
   justify-content: center;
@@ -10,10 +15,6 @@
 
 hr {
   border-top: 1px solid whitesmoke;
-}
-
-.gChart {
-  padding-bottom: 30px;
 }
 
 .text-title {
