@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { map, catchError } from 'rxjs/operators';
 import { GlobalDataSummary } from '../models/global-data';
 import { DateWiseData } from '../models/date-wise-data';
 
@@ -8,13 +8,36 @@ import { DateWiseData } from '../models/date-wise-data';
   providedIn: 'root',
 })
 export class DataServiceService {
-  private globalDataUrl =
-    'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/06-21-2020.csv';
+  private globalDataUrl: string;
+  private baseUrl =
+    'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/';
 
   private dateWiseDataUrl =
     'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv';
 
-  constructor(private http: HttpClient) {}
+  private extension = '.csv';
+  private year;
+  private month;
+  private date;
+
+  constructor(private http: HttpClient) {
+    let now = new Date();
+    this.year = now.getFullYear();
+    this.month = now.getMonth() + 1;
+    this.date = now.getDate();
+
+    this.globalDataUrl = `${this.baseUrl}${this.getDate(
+      this.month
+    )}-${this.getDate(this.date)}-${this.year}${this.extension}`;
+  }
+
+  getDate(date: number) {
+    if (date < 10) {
+      return '0' + date;
+    }
+
+    return date;
+  }
 
   getDateWiseData() {
     return this.http.get(this.dateWiseDataUrl, { responseType: 'text' }).pipe(
@@ -41,7 +64,7 @@ export class DataServiceService {
           });
         });
 
-        console.log(`mainData's result: ${mainData}`);
+        // console.log(`mainData's result: ${mainData}`);
         return mainData;
       })
     );
@@ -79,6 +102,18 @@ export class DataServiceService {
         });
 
         return <GlobalDataSummary[]>Object.values(raw);
+      }),
+      catchError((error: HttpErrorResponse) => {
+        {
+          if (error.status == 404) {
+            this.date = this.date - 1;
+            this.globalDataUrl = `${this.baseUrl}${this.getDate(
+              this.month
+            )}-${this.getDate(this.date)}-${this.year}${this.extension}`;
+            console.log(this.globalDataUrl);
+            return this.getGlobalData();
+          }
+        }
       })
     );
   }
