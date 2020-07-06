@@ -3,3 +3,15 @@
   background-color: var(--background-tertiary);
   border-bottom: 1px solid #ffffff26;
 }
+
+.navbar-dark .navbar-brand {
+  color: var(--foreground-quaternary);
+}
+
+.navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show>.nav-link {
+  color: var(--foreground-quaternary);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: var(--foreground-light);
+}

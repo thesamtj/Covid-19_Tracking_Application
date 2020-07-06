@@ -35,8 +35,8 @@ export interface Theme {
       "--foreground-default": "#5C7D99",
       "--foreground-secondary": "#A3B9CC",
       "--foreground-tertiary": "#F4FAFF",
-      "--foreground-quaternary": "#E5E5E5",
-      "--foreground-light": "#FFFFFF",
+      "--foreground-quaternary": "#FFFFFF",
+      "--foreground-light": "#FFFFFF80",
   
       "--background-default": "#292f35",
       "--background-secondary": "#41474D",
