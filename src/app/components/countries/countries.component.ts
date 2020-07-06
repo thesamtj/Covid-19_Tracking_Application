@@ -79,7 +79,7 @@ export class CountriesComponent implements OnInit {
         })
       ),
       this.dataService.getGlobalData().pipe(
-        map((result) => {
+        map((result: GlobalDataSummary[]) => {
           this.data = result;
           this.data.forEach((cs) => {
             this.countries.push(cs.country);
