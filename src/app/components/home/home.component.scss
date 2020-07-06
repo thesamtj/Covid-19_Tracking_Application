@@ -1,5 +1,5 @@
 .bg-jumbotron {
-  background-color: #292f35 !important;
+  background-color: var(--background-default) !important;
 }
 
 .ui.form {
@@ -14,11 +14,11 @@
 }
 
 hr {
-  border-top: 1px solid whitesmoke;
+  border-top: 1px solid var(--foreground-light);
 }
 
 .text-title {
-  color: white;
+  color: var(--foreground-quaternary) !important;;
 }
 
 @media all and (max-width: 699px) {
