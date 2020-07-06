@@ -9,12 +9,12 @@ export interface Theme {
       "--foreground-default": "#08090A",
       "--foreground-secondary": "#41474D",
       "--foreground-tertiary": "#797C80",
-      "--foreground-quaternary": "#F4FAFF",
-      "--foreground-light": "#41474D",
+      "--foreground-quaternary": "#000000",
+      "--foreground-light": "#00000080",
   
       "--background-default": "#F4FAFF",
       "--background-secondary": "#A3B9CC",
-      "--background-tertiary": "#5C7D99",
+      "--background-tertiary": "#d1d5d8",
       "--background-light": "#FFFFFF",
   
       "--primary-default": "#5DFDCB",
