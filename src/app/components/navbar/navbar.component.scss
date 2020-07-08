@@ -42,7 +42,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color:#292f35;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -60,7 +60,7 @@
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+  background-color: #cccccc;
 }
 
 input:focus + .slider {
