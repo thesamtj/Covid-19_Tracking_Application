@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   totalDeaths = 0;
   totalRecovered = 0;
   globalData: GlobalDataSummary[];
-  loading = false;
+  loading = true;
   dataTable = [];
   chart = {
     title: 'Country:Cases',

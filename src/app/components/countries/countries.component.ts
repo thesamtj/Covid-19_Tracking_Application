@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./countries.component.scss'],
 })
 export class CountriesComponent implements OnInit {
-  checker: boolean;
+  // checker: boolean;
   data: GlobalDataSummary[];
   countries: string[] = [];
   totalConfirmed = 0;
@@ -20,7 +20,7 @@ export class CountriesComponent implements OnInit {
   totalRecovered = 0;
   selectedCountryData: DateWiseData[];
   dateWiseData;
-  loading = false;
+  loading = true;
   dataTable = [];
   chart = {
     LineChart: 'LineChart',
