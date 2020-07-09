@@ -3,11 +3,13 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
 import { GlobalDataSummary } from '../models/global-data';
 import { DateWiseData } from '../models/date-wise-data';
+// import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataServiceService {
+  // private sharedData$: Subject<string> = new Subject();
   private globalDataUrl: string;
   private baseUrl =
     'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/';
@@ -30,6 +32,14 @@ export class DataServiceService {
       this.month
     )}-${this.getDate(this.date)}-${this.year}${this.extension}`;
   }
+
+  // get sharedData() {
+  //   return this.sharedData$.asObservable();
+  // }
+
+  // setSharedData(data) {
+  //   this.sharedData$.next(data);
+  // }
 
   getDate(date: number) {
     if (date < 10) {

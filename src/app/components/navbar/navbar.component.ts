@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ThemeService } from 'src/app/services/theme.service';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -7,15 +6,14 @@ import { ThemeService } from 'src/app/services/theme.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(private themeService: ThemeService) {}
+  @Output()
+  toggleThemeEvent = new EventEmitter<any>();
+
+  constructor() {}
 
   ngOnInit(): void {}
 
   toggleTheme() {
-    if (this.themeService.isDarkTheme()) {
-      this.themeService.setLightTheme();
-    } else {
-      this.themeService.setDarkTheme();
-    }
+    this.toggleThemeEvent.emit();
   }
 }

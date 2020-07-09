@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DataServiceService } from 'src/app/services/data-service.service';
 import { GlobalDataSummary } from 'src/app/models/global-data';
 
@@ -8,6 +8,7 @@ import { GlobalDataSummary } from 'src/app/models/global-data';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  // checker: string;
   totalConfirmed = 0;
   totalActive = 0;
   totalDeaths = 0;
@@ -24,14 +25,14 @@ export class HomeComponent implements OnInit {
       hAxis: {
         title: 'Countries',
         titleTextStyle: {
-          color: '#007Bff',
+          // color: '#007Bff',
           fontName: 'Arial',
           fontSize: 12,
           bold: true,
           italic: false,
         },
         textStyle: {
-          color: '#fff',
+          // color: '#fff',
           fontSize: 8,
           fontName: 'Arial',
           bold: false,
@@ -41,14 +42,14 @@ export class HomeComponent implements OnInit {
       vAxis: {
         title: 'Cases',
         titleTextStyle: {
-          color: '#007Bff',
+          // color: '#007Bff',
           fontName: 'Arial',
           fontSize: 12,
           bold: true,
           italic: false,
         },
         textStyle: {
-          color: '#fff',
+          // color: '#fff',
           fontSize: 8,
           fontName: 'Arial',
           bold: false,
@@ -60,11 +61,42 @@ export class HomeComponent implements OnInit {
         easing: 'out',
       },
       is3D: true,
-      backgroundColor: '#343a40',
+      backgroundColor: '#d1d5d8'
     },
   };
 
   constructor(private dataService: DataServiceService) {}
+
+  ngOnInit(): void {
+    this.dataService.getGlobalData().subscribe({
+      next: (result) => {
+        // console.log(result);
+        this.globalData = result;
+        result.forEach((cs) => {
+          if (!Number.isNaN(cs.confirmed)) {
+            this.totalConfirmed += cs.confirmed;
+            this.totalActive += cs.active;
+            this.totalDeaths += cs.deaths;
+            this.totalRecovered += cs.recovered;
+          }
+        });
+        this.initChart('c');
+      },
+      complete: () => {
+        this.loading = false;
+      },
+    });
+    // this.dataService.sharedData.subscribe(
+    //   s => {
+    //     console.log("b",s);
+    //     this.checker = s;
+    //   },
+    //   e => {
+    //     console.log(e)
+    //   }
+    // );
+  }
+
 
   initChart(caseType: string) {
     this.dataTable = [];
@@ -100,27 +132,7 @@ export class HomeComponent implements OnInit {
     // console.log(`Data table: ${dataTable}`);
   }
 
-  ngOnInit(): void {
-    this.dataService.getGlobalData().subscribe({
-      next: (result) => {
-        // console.log(result);
-        this.globalData = result;
-        result.forEach((cs) => {
-          if (!Number.isNaN(cs.confirmed)) {
-            this.totalConfirmed += cs.confirmed;
-            this.totalActive += cs.active;
-            this.totalDeaths += cs.deaths;
-            this.totalRecovered += cs.recovered;
-          }
-        });
-        this.initChart('c');
-      },
-      complete: () => {
-        this.loading = false;
-      },
-    });
-  }
-
+ 
   updateChart(input: HTMLInputElement) {
     console.log(`Update chart: ${input.value}`);
     this.initChart(input.value);

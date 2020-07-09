@@ -11,6 +11,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./countries.component.scss'],
 })
 export class CountriesComponent implements OnInit {
+  checker: boolean;
   data: GlobalDataSummary[];
   countries: string[] = [];
   totalConfirmed = 0;
@@ -29,14 +30,14 @@ export class CountriesComponent implements OnInit {
       hAxis: {
         title: 'Date',
         titleTextStyle: {
-          color: '#007Bff',
+          // color: '#007Bff',
           fontName: 'Arial',
           fontSize: 12,
           bold: true,
           italic: false,
         },
         textStyle: {
-          color: '#fff',
+          // color: '#fff',
           fontSize: 16,
           fontName: 'Arial',
           bold: false,
@@ -46,14 +47,14 @@ export class CountriesComponent implements OnInit {
       vAxis: {
         title: 'Cases',
         titleTextStyle: {
-          color: '#007Bff',
+          // color: '#007Bff',
           fontName: 'Arial',
           fontSize: 12,
           bold: true,
           italic: false,
         },
         textStyle: {
-          color: '#fff',
+          // color: '#fff',
           fontSize: 16,
           fontName: 'Arial',
           bold: false,
@@ -65,7 +66,7 @@ export class CountriesComponent implements OnInit {
         easing: 'out',
       },
       is3D: true,
-      backgroundColor: '#343a40',
+      backgroundColor: '#d1d5d8',
     },
   };
 
